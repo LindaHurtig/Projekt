@@ -1,2 +1,2 @@
-# demoProjekt
+# Projekt
 test
