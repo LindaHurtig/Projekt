@@ -1,5 +1,7 @@
 package skier;
 
+import time.Time;
+
 public class Skier {
 	
 	private int startNumber;
