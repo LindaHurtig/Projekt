@@ -1,5 +1,14 @@
 package race.individualrace;
 
-public class IndividulRace {
+import race.*;
+
+public class IndividualRace extends Race{
 	//Variabler och metoder som gäller både individuell start
+	
+	public static void startIndividualRace(){
+		
+		
+		
+	}
+	
 }
