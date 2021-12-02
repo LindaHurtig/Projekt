@@ -1,45 +1,66 @@
 package skier;
 
-import time.Time;
+import person.Person;
+import time.StopWatch;
 
-public class Skier {
+public class Skier extends Person{
 	
+
 	private int startNumber;
-	private Time startTime = new Time();
-	private int finalPosition;
-	private int[] finalTime = new int [numOfSkiers]; 
-	private SplitTime splitTimes[] = new SplitTime[9];
+	private StopWatch startTime = new StopWatch();
+	private int[] finalTime = new int [3]; 
+	private int [] splitTimes = new int [3];
 	
 	
+
+
+
+	public Skier(String name, int age) {
+		super(name, age);
+
+	}
+
+
 	public int getStartNumber() {
 		return startNumber;
 	}
+
+
 	public void setStartNumber(int startNumber) {
 		this.startNumber = startNumber;
 	}
-	public Time getStartTime() {
+
+
+	public StopWatch getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(Time startTime) {
+
+
+	public void setStartTime(StopWatch startTime) {
 		this.startTime = startTime;
 	}
-	public int getFinalPosition() {
-		return finalPosition;
-	}
-	public void setFinalPosition(int finalPosition) {
-		this.finalPosition = finalPosition;
-	}
+
+
 	public int[] getFinalTime() {
 		return finalTime;
 	}
+
+
 	public void setFinalTime(int[] finalTime) {
 		this.finalTime = finalTime;
 	}
-	public SplitTime[] getSplitTimes() {
+
+
+	public int[] getSplitTimes() {
 		return splitTimes;
 	}
-	public void setSplitTimes(SplitTime[] splitTimes) {
+
+
+	public void setSplitTimes(int[] splitTimes) {
 		this.splitTimes = splitTimes;
 	}
+	
+	
+
 
 }

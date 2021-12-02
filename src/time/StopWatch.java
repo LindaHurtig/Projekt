@@ -1,6 +1,6 @@
 package time;
 
-public class Time {
+public class StopWatch {
 	int hours;
 	int minutes;
 	int seconds;
