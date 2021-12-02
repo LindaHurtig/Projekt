@@ -27,14 +27,16 @@ public class Race {
 		
 		Skier skier = new Skier(name, age);
 		
-		Startlist.addSkiers(skier);
+		startlist.addSkiers(skier);
 		
 		
-		System.out.println(skier.getName() + skier.getAge());
+		
 		}
 //		in.close();
+		//String startlista = startlist.toString();
+		//System.out.println(startlista);
+	
 	}
 	
 
-	
 }
