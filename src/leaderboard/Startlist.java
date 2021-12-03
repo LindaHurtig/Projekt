@@ -24,10 +24,18 @@ public class Startlist {
 
 	public void addSkiers(Skier skier) {
 		skierslist.add(skier);
-		
-		String skierslista = skierslist.toString();
-	System.out.println(skierslista);
 
+	}
+	
+	public void printSkiersList() {
+		for(Skier skier : skierslist) {
+			System.out.println(skier.getName() + ": " + skier.getAge());
+//			System.out.println(skier.getName() + ": " + skier.getAge() + ": " skier.getStartNumber());
+		}
+	}
+	
+	public void sortByStartNuumber() {
+		
 	}
 	
 }

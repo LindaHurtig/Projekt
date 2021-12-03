@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import leaderboard.Startlist;
 import skier.Skier;
+import skier.random.RaceTag;
 
 
 public class Race {
@@ -24,18 +25,13 @@ public class Race {
 		System.out.println("Ålder:");
 		int age = in.nextInt();
 		
+		Skier skier = new Skier(i+1, name, age);
 		
-		Skier skier = new Skier(name, age);
-		
-		startlist.addSkiers(skier);
-		
-		
-		
+		startlist.addSkiers(skier);	
 		}
-//		in.close();
-		//String startlista = startlist.toString();
-		//System.out.println(startlista);
-	
+		
+		RaceTag raceTag = new RaceTag();
+		raceTag.rndRaceTag(startlist);
 	}
 	
 

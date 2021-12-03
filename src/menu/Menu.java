@@ -10,7 +10,7 @@ import race.pursuitrace.*;
 public class Menu {
 
 	public static void main(String[] args) {
-
+		
 		System.out.println("Hej och välkommen till dagens skidtävling från grupp 4A");
 
 		Scanner input = new Scanner(System.in);

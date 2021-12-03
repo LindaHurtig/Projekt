@@ -5,36 +5,18 @@ import time.StopWatch;
 
 public class Skier extends Person{
 	
-
-	private int startNumber;
 	private StopWatch startTime = new StopWatch();
 	private int[] finalTime = new int [3]; 
 	private int [] splitTimes = new int [3];
-	
-	
 
-
-
-	public Skier(String name, int age) {
-		super(name, age);
+	public Skier(int startNumber, String name, int age) {
+		super(startNumber, name, age);
 
 	}
-
-
-	public int getStartNumber() {
-		return startNumber;
-	}
-
-
-	public void setStartNumber(int startNumber) {
-		this.startNumber = startNumber;
-	}
-
 
 	public StopWatch getStartTime() {
 		return startTime;
 	}
-
 
 	public void setStartTime(StopWatch startTime) {
 		this.startTime = startTime;
