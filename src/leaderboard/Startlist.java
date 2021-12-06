@@ -28,9 +28,12 @@ public class Startlist {
 	}
 	
 	public void printSkiersList() {
+		System.out.println("Startlista\nAntal deltagare: " + skierslist.size());
+		System.out.println("Startnr:\tNamn:\tÅlder");
+		
 		for(Skier skier : skierslist) {
-			System.out.println(skier.getName() + ": " + skier.getAge());
-//			System.out.println(skier.getName() + ": " + skier.getAge() + ": " skier.getStartNumber());
+			System.out.println(skier.getStartNumber() + "\t\t" + skier.getName() + "\t" + skier.getAge());
+
 		}
 	}
 	
