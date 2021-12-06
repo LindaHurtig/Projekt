@@ -13,11 +13,10 @@ public class RaceTag {
 		
 		// Temporär lista som innehåller startNumber
 		List<Integer> startNumbers = new ArrayList<Integer>();
-		System.out.println("-- old start numbers --");
+	
 		
 		//Skriver ut listan i den ordning användaren skrivit in
 		for (Skier test : list.getSkierslist()) {
-			System.out.println(test.getStartNumber() + ", " + test.getName() + ", " + test.getAge());
 			startNumbers.add(test.getStartNumber());
 		}
 		
@@ -29,18 +28,13 @@ public class RaceTag {
 			list.getSkierslist().get(i).setStartNumber(startNumbers.get(i));
 		}
 
-		System.out.println("-- new start numbers --"); // ta bort sen, bara för utskrivnings test.
-		for (Skier test : list.getSkierslist()) {
-			System.out.println(test.getStartNumber() + ", " + test.getName() + ", " + test.getAge());
-		}
+
 		
 		// Sorterar orginallistan efter startNumber
 		Collections.sort(list.getSkierslist(), new Sortbyroll());
 		
-		System.out.println("-- new start numbers --"); // ta bort sen, bara för utskrivnings test.
-		for (Skier test : list.getSkierslist()) {
-			System.out.println(test.getStartNumber() + ", " + test.getName() + ", " + test.getAge());
-		}
+		list.printSkiersList();
+
 	}
 	
 	class Sortbyroll implements Comparator<Skier>
