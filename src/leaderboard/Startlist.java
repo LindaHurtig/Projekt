@@ -35,9 +35,6 @@ public class Startlist {
 			System.out.println(skier.getStartNumber() + "\t\t" + skier.getName() + "\t" + skier.getAge());
 
 		}
-	}
-	
-	public void sortByStartNuumber() {
 		
 	}
 	

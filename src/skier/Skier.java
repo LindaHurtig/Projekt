@@ -3,11 +3,11 @@ package skier;
 import person.Person;
 import time.StopWatch;
 
-public class Skier extends Person{
+public class Skier extends Person {
 	
 	private StopWatch startTime = new StopWatch();
-	private int[] finalTime = new int [3]; 
-	private int [] splitTimes = new int [3];
+	private long finalTime = -1; 
+	private long splitTime = -1;
 
 	public Skier(int startNumber, String name, int age) {
 		super(startNumber, name, age);
@@ -23,23 +23,23 @@ public class Skier extends Person{
 	}
 
 
-	public int[] getFinalTime() {
+	public long getFinalTime() {
 		return finalTime;
 	}
 
 
-	public void setFinalTime(int[] finalTime) {
+	public void setFinalTime(long finalTime) {
 		this.finalTime = finalTime;
 	}
 
 
-	public int[] getSplitTimes() {
-		return splitTimes;
+	public long getSplitTime() {
+		return splitTime;
 	}
 
 
-	public void setSplitTimes(int[] splitTimes) {
-		this.splitTimes = splitTimes;
+	public void setSplitTime(long l) {
+		this.splitTime = l;
 	}
 	
 	
