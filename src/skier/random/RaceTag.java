@@ -10,10 +10,8 @@ import skier.Skier;
 public class RaceTag {
 	
 	public void rndRaceTag(Startlist list) {
-		
 		// Temporär lista som innehåller startNumber
 		List<Integer> startNumbers = new ArrayList<Integer>();
-	
 		
 		//Skriver ut listan i den ordning användaren skrivit in
 		for (Skier test : list.getSkierslist()) {
@@ -23,24 +21,19 @@ public class RaceTag {
 		// Kastar om den temporära listans startNumber
 		Collections.shuffle(startNumbers);
 		
-		// Lägger in den slumpade startNumbers i den orginallisten 
+		// Lägger in de slumpade startNumbers i orginal listan igen.
 		for (int i = 0; i < startNumbers.size(); i++) {
 			list.getSkierslist().get(i).setStartNumber(startNumbers.get(i));
 		}
-
-
 		
 		// Sorterar orginallistan efter startNumber
 		Collections.sort(list.getSkierslist(), new Sortbyroll());
 		
-		list.printSkiersList();
-
+		list.printSkiersList(); // utskrift av DELTAGARNAS START LISTA.
 	}
 	
-	class Sortbyroll implements Comparator<Skier>
-	{
-	    public int compare(Skier a, Skier b)
-	    {
+	class Sortbyroll implements Comparator<Skier> {
+	    public int compare(Skier a, Skier b) {
 	        return a.getStartNumber() - b.getStartNumber();
 	    }
 	}
