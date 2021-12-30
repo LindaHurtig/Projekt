@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.common.base.Stopwatch;
 
+import leaderboard.Leaderboard;
 import menu.InputThread;
 import skier.Skier;
 
@@ -13,6 +14,8 @@ public class IndividualRace implements Runnable {
 	private Stopwatch stopWatch;
 	private List<Skier> skierList;
 	private InputThread inputThread;
+	private Leaderboard leaderBoard;
+	private boolean threadRunning;
 
 	//Variabler och metoder som gäller både individuell start
 	public void startIndividualRace(List<Skier> list) {
@@ -21,19 +24,27 @@ public class IndividualRace implements Runnable {
 			return;
 		}
 		skierList = list;
+		leaderBoard = new Leaderboard(list);
 		stopWatch = Stopwatch.createStarted();
 
 		thread = new Thread(this);
+		threadRunning = true;
 		thread.start();
 
-		inputThread = new InputThread(skierList, stopWatch);
+		inputThread = new InputThread(skierList, stopWatch, leaderBoard);
 		inputThread.inputThread = new Thread(inputThread);
 		inputThread.inputThread.start(); // startar scanner input tråden.
 	}
 
 	@Override
 	public void run() {
-		while(thread.isAlive()) {
+		while(threadRunning) {
+			if(isRaceFinished()) {
+				leaderBoard.printLeaderBoardResult();
+				stopThread();
+				inputThread.stopThread();
+			}
+			
 			long hours = stopWatch.elapsed().toHoursPart();
 			long minutes = stopWatch.elapsed().toMinutesPart();
 			long seconds = stopWatch.elapsed().toSecondsPart();
@@ -43,9 +54,8 @@ public class IndividualRace implements Runnable {
 			 * Eclipse: Window -> Preferences -> Run/Debug -> Console -> "Enable Interpret ASCII control characters".
 			 */
 			System.out.print("\r");
-			System.out.print("Klocka - timmar:" + hours + " minuter:" + minutes + " sekunder:" + seconds + " millisekunder: " + millis);
-			// (30 * (startNumber - 1))
-
+			System.out.print("Klocka - timmar:" + hours + " minuter:" + minutes + " sekunder:" + seconds + " millisekunder: " + millis + " \t");
+			
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -53,4 +63,19 @@ public class IndividualRace implements Runnable {
 			}
 		}
 	}
+	
+	private void stopThread() {
+		threadRunning = false;
+		thread.stop();
+	}
+	
+	private boolean isRaceFinished() {
+		for(Skier list : skierList) {
+			if(list.getFinalTime() == -1) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 }

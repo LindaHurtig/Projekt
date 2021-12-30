@@ -6,6 +6,7 @@ public class Skier extends Person {
 
 	private long finalTime = -1; 
 	private long splitTime = -1;
+	private long startTime = 0;
 
 	public Skier(int startNumber, String name, int age) {
 		super(startNumber, name, age);
@@ -25,5 +26,13 @@ public class Skier extends Person {
 
 	public void setSplitTime(long l) {
 		this.splitTime = l;
+	}
+	
+	public long getStartTime() {
+		return startTime;
+	}
+	
+	public void setStartTime(long l) {
+		this.startTime = l;
 	}
 }

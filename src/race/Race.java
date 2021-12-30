@@ -10,6 +10,7 @@ import skier.random.RaceTag;
 public class Race extends Startlist {
 	//Variabler och metoder som gäller både individuell start, jaktstart och masstart
 
+	// TODO kvalitetssäkring.
 	public void addSkier() {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Hur många åkare vill du lägga till?");

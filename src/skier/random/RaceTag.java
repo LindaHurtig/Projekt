@@ -27,14 +27,20 @@ public class RaceTag {
 		}
 
 		// Sorterar orginallistan efter startNumber
-		Collections.sort(list.getSkierslist(), new Sortbyroll());
+		Collections.sort(list.getSkierslist(), new SortByStartNumber());
+		
+		//lägg till starttid.
+		for(Skier s : list.getSkierslist()) {
+			s.setStartTime((30000 * (s.getStartNumber() - 1)));
+		}
 
 		list.printSkiersList(); // utskrift av DELTAGARNAS START LISTA.
 	}
 
-	class Sortbyroll implements Comparator<Skier> {
+	public class SortByStartNumber implements Comparator<Skier> {
 		public int compare(Skier a, Skier b) {
 			return a.getStartNumber() - b.getStartNumber();
 		}
 	}
+	
 }
