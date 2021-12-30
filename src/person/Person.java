@@ -1,6 +1,7 @@
 package person;
 
 public class Person {
+	
 	private String name;
 	private int age;
 	private int startNumber;
@@ -11,7 +12,7 @@ public class Person {
 		this.name = name;
 		this.age = age;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -19,7 +20,7 @@ public class Person {
 	public int getAge() {
 		return age;
 	}
-	
+
 	public int getStartNumber() {
 		return startNumber;
 	}
@@ -27,12 +28,9 @@ public class Person {
 	public void setStartNumber(int startNumber) {
 		this.startNumber = startNumber;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Person [name=" + name + ", age=" + age + "]";
 	}
-
-
-
 }

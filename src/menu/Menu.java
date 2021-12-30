@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import race.Race;
 import race.individualrace.*;
-import time.StopWatch;
 
 public class Menu {
 
@@ -14,7 +13,7 @@ public class Menu {
 		boolean running = true;
 		Scanner input = new Scanner(System.in);
 		int choice;
-		
+
 		while(running) {
 			System.out.println("[1] Individuellstart");
 			System.out.println("[2] Läggtill åkare");
@@ -24,25 +23,25 @@ public class Menu {
 			choice = input.nextInt();
 
 			switch (choice) {
-				case 1: 
-					//...
+			case 1: 
+				//...
 				break;
-				case 2:  
-					Race race = new Race();
-					race.addSkier(); 
-					
-					System.out.println("Inviduella loppet har startat!");
-					IndividualRace iRace = new IndividualRace();
-					iRace.startIndividualRace(race.getSkierslist());
-					running = false;
+			case 2:  
+				Race race = new Race();
+				race.addSkier(); 
+
+				System.out.println("Inviduella loppet har startat!");
+				IndividualRace iRace = new IndividualRace();
+				iRace.startIndividualRace(race.getSkierslist());
+				running = false;
 				break;
-				case 5: 
-					System.out.println("Programmet avslutas"); 
-					running = false;
-					input.close();
+			case 5: 
+				System.out.println("Programmet avslutas"); 
+				running = false;
+				input.close();
 				break;
-				default: 
-					System.out.println("Ogiltigt val\n"); 
+			default: 
+				System.out.println("Ogiltigt val\n"); 
 				break;
 			}
 
