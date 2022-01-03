@@ -65,5 +65,6 @@ public class InputThread implements Runnable {
 	public void stopThread() {
 		threadRunning = false;
 		inputThread.stop();
+		inputReader.close();
 	}
 }
