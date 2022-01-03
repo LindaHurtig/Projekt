@@ -5,7 +5,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import skier.Skier;
-import skier.random.RaceTag;
 
 public class Leaderboard {
 	
@@ -15,33 +14,31 @@ public class Leaderboard {
 		this.startList = list;
 	}
 	
-	
 	public void printLeaderBoardResult() {
 		// Sorterar orginallistan efter getFinalTime()
 		Collections.sort(startList, new SortByTime());
 		
-		System.out.println("-----SLUT RESULTAT-----");
+		int winnerIndex = 1;
+		System.out.println("------------------SLUT RESULTAT-------------------");
 		String str = "";
 		for(Skier skier : startList) {
-			str = "Startnr: " + skier.getStartNumber() + " | Namn: " + skier.getName() + " | Ålder: " + skier.getAge() + " | Starttid: " + convertTime(skier.getStartTime());
-			if(skier.getSplitTime() == -1) {
-				str += " | Mellantid: --";
-			} else {
-				str += " | Mellantid: " + convertTime(skier.getSplitTime());
-			}
+			str = "Placering: " + winnerIndex + " | Namn: " + skier.getName() + " | Ålder: " + skier.getAge() + " | Starttid: " + convertTime(skier.getStartTime());
+			str += " | Mellantid: " + (skier.getSplitTime() == -1 ? "--" : convertTime(skier.getSplitTime()));
 			str += " | Sluttid: " + convertTime(skier.getFinalTime());
 			System.out.println(str);
+			winnerIndex++;
 		}
+		System.out.println("--------------------------------------------------");
 	}
 	
 	public void printSkierSplitTime(int skierNumber) {
-		Skier skier = startList.get(skierNumber);
-		if(skier == null) {
+		if(skierNumber > startList.size()) {
 			System.out.println("Kan inte hitta åkare!");
 			return;
 		}
+		Skier skier = startList.get(skierNumber);
 		System.out.println("Startnummer: " + skier.getStartNumber() + " | Namn: " + skier.getName() + " | Mellantid: " + convertTime(skier.getSplitTime()));
-		
+		System.out.println("");
 	}
 	
 	public String convertTime(long durationInMillis) {
@@ -54,7 +51,7 @@ public class Leaderboard {
 		return time;
 	}
 	
-	private class SortByTime implements Comparator<Skier> {
+	class SortByTime implements Comparator<Skier> {
 		public int compare(Skier a, Skier b) {
 			return (int) (a.getFinalTime() - b.getFinalTime());
 		}

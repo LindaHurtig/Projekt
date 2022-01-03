@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.google.common.base.Stopwatch;
 
+import inputs.InputThread;
 import leaderboard.Leaderboard;
-import menu.InputThread;
 import skier.Skier;
 
 public class IndividualRace implements Runnable {
@@ -27,6 +27,11 @@ public class IndividualRace implements Runnable {
 		leaderBoard = new Leaderboard(list);
 		stopWatch = Stopwatch.createStarted();
 
+		System.out.println("-----------INVIDUELLA RACET HAR STARTAT-----------");
+		System.out.println("För Mellantid skriv 'mellantid + åkarens nummer'");
+		System.out.println("För Sluttid skriv 'sluttid + åkarens nummer'");
+		System.out.println("--------------------------------------------------");
+		
 		thread = new Thread(this);
 		threadRunning = true;
 		thread.start();

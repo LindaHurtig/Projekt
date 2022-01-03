@@ -1,6 +1,6 @@
 package menu;
 
-import inputs.AllInputs;
+import inputs.InputExceptionHandler;
 import race.Race;
 import race.individualrace.*;
 
@@ -12,7 +12,7 @@ public class Menu {
 		boolean running = true;
 		int choice;
 		
-		AllInputs inputs = new AllInputs();
+		InputExceptionHandler inputs = new InputExceptionHandler();
 
 		while(running) {
 			System.out.println("[1] Starta race");
@@ -25,7 +25,6 @@ public class Menu {
 				Race race = new Race();
 				race.addSkier(); 
 
-				System.out.println("Inviduella loppet har startat!");
 				IndividualRace iRace = new IndividualRace();
 				iRace.startIndividualRace(race.getSkierslist());
 				running = false;

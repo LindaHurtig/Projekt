@@ -37,7 +37,7 @@ public class RaceTag {
 		list.printSkiersList(); // utskrift av DELTAGARNAS START LISTA.
 	}
 
-	public class SortByStartNumber implements Comparator<Skier> {
+	class SortByStartNumber implements Comparator<Skier> {
 		public int compare(Skier a, Skier b) {
 			return a.getStartNumber() - b.getStartNumber();
 		}
