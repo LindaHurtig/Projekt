@@ -1,8 +1,6 @@
 package race;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
+import inputs.AllInputs;
 import leaderboard.Startlist;
 import skier.Skier;
 import skier.random.RaceTag;
@@ -13,26 +11,18 @@ public class Race extends Startlist {
 
 	// TODO kvalitetssäkring.
 	public void addSkier() {
-		Scanner in = new Scanner(System.in);
+		AllInputs inputs = new AllInputs();
 		System.out.println("Hur många åkare vill du lägga till?");
 
-		int nrNewSkiers = in.nextInt();
+		int nrNewSkiers = inputs.inputInt("antal åkare");
 
 		for (int i = 0; i < nrNewSkiers; i++) {
 			System.out.println("Namn: ");
-			String name = in.next();
+			String name = inputs.inputString();
 
-			//Ett sätt att få rätt input
-			int age = 0;
-			while (age >= 0) {
-				System.out.println("Ålder:");
-				try {
-					age = in.nextInt();
-				} catch (InputMismatchException e) {
-					System.out.println("Skriv en ålder tack...");
-					in.nextLine();
-				}
-			}
+			System.out.println("Ålder:");
+			int age = inputs.inputInt("en ålder");
+
 
 			Skier skier = new Skier(i + 1, name, age);
 

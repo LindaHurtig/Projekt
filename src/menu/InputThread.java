@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.google.common.base.Stopwatch;
 
+import inputs.AllInputs;
 import leaderboard.Leaderboard;
 import skier.Skier;
 
@@ -28,13 +29,18 @@ public class InputThread implements Runnable {
 
 	@Override
 	public void run() {
+		AllInputs inputs = new AllInputs();
+		
 		while(threadRunning) {
 			String optionInput = "";
 			if(inputReader.hasNext()) {
-				optionInput = inputReader.nextLine();
+				optionInput = inputs.inputString();
 				if(optionInput.contains("mellantid")) { // MELLAN TID
 					String filterNumber = optionInput.replace("mellantid ", "");
-					int skier = Integer.parseInt(filterNumber);
+					
+					int skier = inputs.inputStringToInt("med åkarens nummer", filterNumber);
+					
+//					int skier = Integer.parseInt(filterNumber);
 
 					Skier selectedSkier = skierList.get(skier);
 					selectedSkier.setSplitTime(selectedSkier.getStartTime() + stopWatch.elapsed().toMillis());
