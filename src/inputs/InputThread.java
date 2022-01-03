@@ -14,13 +14,14 @@ public class InputThread implements Runnable {
 	private Stopwatch stopWatch;
 	private Leaderboard leaderBoard;
 	private boolean threadRunning;
-	private InputExceptionHandler inputs = new InputExceptionHandler();
+	private InputExceptionHandler inputs;
 
-	public InputThread(List<Skier> list, Stopwatch stopWatch, Leaderboard leaderBoard) {
+	public InputThread(List<Skier> list, Stopwatch stopWatch, Leaderboard leaderBoard, InputExceptionHandler ieh) {
 		this.threadRunning = true;
 		this.skierList = list;
 		this.stopWatch = stopWatch;
 		this.leaderBoard = leaderBoard;
+		this.inputs = ieh;
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputExceptionHandler {
+	
 	public Scanner scan = new Scanner(System.in);
 
 	public String inputStringNext() {
@@ -40,5 +41,9 @@ public class InputExceptionHandler {
 			return -1;
 		}
 		return number;
+	}
+	
+	public void closeScanner() {
+		scan.close();
 	}
 }

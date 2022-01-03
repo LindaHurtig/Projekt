@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.common.base.Stopwatch;
 
+import inputs.InputExceptionHandler;
 import inputs.InputThread;
 import leaderboard.Leaderboard;
 import skier.Skier;
@@ -15,10 +16,10 @@ public class IndividualRace implements Runnable {
 	private List<Skier> skierList;
 	private InputThread inputThread;
 	private Leaderboard leaderBoard;
-	private boolean threadRunning;
+	public boolean threadRunning;
 
 	//Variabler och metoder som gäller både individuell start
-	public void startIndividualRace(List<Skier> list) {
+	public void startIndividualRace(List<Skier> list, InputExceptionHandler ieh) {
 		if(list.size() == 0) {
 			System.out.println("Det finns inga åkare registrerad!");
 			return;
@@ -36,7 +37,7 @@ public class IndividualRace implements Runnable {
 		threadRunning = true;
 		thread.start();
 
-		inputThread = new InputThread(skierList, stopWatch, leaderBoard);
+		inputThread = new InputThread(skierList, stopWatch, leaderBoard, ieh);
 		inputThread.inputThread = new Thread(inputThread);
 		inputThread.inputThread.start(); // startar scanner input tråden.
 	}

@@ -1,5 +1,7 @@
 package race;
 
+import java.util.Scanner;
+
 import inputs.InputExceptionHandler;
 import leaderboard.Startlist;
 import skier.Skier;
@@ -8,8 +10,7 @@ import skier.random.RaceTag;
 public class Race extends Startlist {
 	// Variabler och metoder som gäller individuell start.
 	
-	public void addSkier() {
-		InputExceptionHandler inputs = new InputExceptionHandler();
+	public void addSkier(InputExceptionHandler inputs) {
 		System.out.println("Hur många åkare vill du lägga till?");
 
 		int nrNewSkiers = inputs.inputInt("antal åkare");

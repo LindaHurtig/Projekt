@@ -11,10 +11,12 @@ public class Menu {
 
 		boolean running = true;
 		int choice;
-		
 		InputExceptionHandler inputs = new InputExceptionHandler();
-
+		IndividualRace iRace = null;
 		while(running) {
+			if(iRace != null && iRace.threadRunning) {
+				continue;
+			}
 			System.out.println("[1] Starta race");
 			System.out.println("[2] Avsluta");
 
@@ -23,21 +25,21 @@ public class Menu {
 			switch (choice) {
 			case 1: 
 				Race race = new Race();
-				race.addSkier(); 
+				race.addSkier(inputs);
 
-				IndividualRace iRace = new IndividualRace();
-				iRace.startIndividualRace(race.getSkierslist());
+				iRace = new IndividualRace();
+				iRace.startIndividualRace(race.getSkierslist(), inputs);
 				running = false;
 				break;
 			case 2:  
-				System.out.println("Programmet avslutas"); 
+				System.out.println("Programmet avslutas");
 				running = false;
+				System.exit(0);
 				break;
 			default: 
 				System.out.println("Ogiltigt val\n"); 
 				break;
 			}
-
 		}
 	}
 }
