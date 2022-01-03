@@ -30,36 +30,35 @@ public class InputThread implements Runnable {
 	@Override
 	public void run() {
 		AllInputs inputs = new AllInputs();
-		
+
 		while(threadRunning) {
 			String optionInput = "";
-			if(inputReader.hasNext()) {
-				optionInput = inputs.inputString();
-				if(optionInput.contains("mellantid")) { // MELLAN TID
-					String filterNumber = optionInput.replace("mellantid ", "");
-					
-					int skier = inputs.inputStringToInt("med åkarens nummer", filterNumber);
-					
-//					int skier = Integer.parseInt(filterNumber);
-
-					Skier selectedSkier = skierList.get(skier);
-					selectedSkier.setSplitTime(selectedSkier.getStartTime() + stopWatch.elapsed().toMillis());
-					leaderBoard.printSkierSplitTime(skier);
-				} 
-				else if(optionInput.contains("sluttid")) { // SLUT TID
-					String filterNumber = optionInput.replace("sluttid ", "");
-					int skier = Integer.parseInt(filterNumber);
-
-					Skier selectedSkier = skierList.get(skier);
-					if(selectedSkier.getFinalTime() == -1) {
-						selectedSkier.setFinalTime(selectedSkier.getStartTime() + stopWatch.elapsed().toMillis());
-						System.out.println("Sparad sluttid '" + selectedSkier.getName() + "': " + stopWatch.toString());
-					} else {
-						System.out.println(selectedSkier.getName() + " har redan åkt i mål!");
-					}
+			optionInput = inputs.inputString();
+			if(optionInput.contains("mellantid")) { // MELLAN TID
+				String filterNumber = optionInput.replace("mellantid ", "");
+				int skier = inputs.inputStringToInt(filterNumber, "Du måste mata in en siffra som är åkarens startnummer efter 'mellantid'");
+				if(skier == -1) {
+					continue;
+				}
+				Skier selectedSkier = skierList.get(skier);
+				selectedSkier.setSplitTime(selectedSkier.getStartTime() + stopWatch.elapsed().toMillis());
+				leaderBoard.printSkierSplitTime(skier);
+			} 
+			else if(optionInput.contains("sluttid")) { // SLUT TID
+				String filterNumber = optionInput.replace("sluttid ", "");
+				int skier = inputs.inputStringToInt(filterNumber, "Du måste mata in en siffra som är åkarens startnummer efter 'sluttid'");
+				if(skier == -1) {
+					continue;
+				}
+				Skier selectedSkier = skierList.get(skier);
+				if(selectedSkier.getFinalTime() == -1) {
+					selectedSkier.setFinalTime(selectedSkier.getStartTime() + stopWatch.elapsed().toMillis());
+					System.out.println("Sparad sluttid '" + selectedSkier.getName() + "': " + stopWatch.toString());
+				} else {
+					System.out.println(selectedSkier.getName() + " har redan åkt i mål!");
 				}
 			}
-			
+
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
@@ -67,7 +66,7 @@ public class InputThread implements Runnable {
 			}
 		}
 	}
-	
+
 	public void stopThread() {
 		threadRunning = false;
 		inputThread.stop();

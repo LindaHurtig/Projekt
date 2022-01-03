@@ -4,18 +4,20 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AllInputs {
-	private Scanner scan = new Scanner(System.in);
+	public Scanner scan = new Scanner(System.in);
 
 	public String inputString() {
-		if(scan.hasNext())
+		if(scan.hasNext()) {
 			scan.nextLine();
-
+		}
 		return scan.nextLine();
 	}
 
 	public int inputInt(String str) {
 		int inputInt = 0;
-
+		//if(scan.hasNext()) {
+		//	scan.nextLine();
+		//}
 		while (inputInt >= 0) {
 			try {
 				inputInt = scan.nextInt();
@@ -29,16 +31,29 @@ public class AllInputs {
 		return inputInt;
 	}
 	
-	public int inputStringToInt(String str, String strNum) {
-		int intNum = 0;
-
-			try {
-				intNum = Integer.parseInt(strNum);
-				
-			} catch (InputMismatchException e) {
-				System.out.println("Skriv " + str);
-				scan.nextLine();
-			}
-		return intNum;
+	public int inputStringToInt(String strToInt, String message) {
+		int number = 0;
+		try {
+			number = Integer.parseInt(strToInt);
+	    } catch (NumberFormatException nfe) {
+	    	System.out.println(message);
+	    	return -1;
+	    }
+		return number;
 	}
+	
+	/*public int inputStringToInt(String strToInt, String message) {
+		boolean run = true;
+		int number = 0;
+		while(run) {
+			try {
+				number = Integer.parseInt(strToInt);
+				run = false;
+			} catch (NumberFormatException e) {
+				System.out.println(message);
+				run = false;
+			}
+		}
+		return number;
+	}*/
 }
