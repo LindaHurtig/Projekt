@@ -15,18 +15,13 @@ public class Menu {
 		int choice;
 
 		while(running) {
-			System.out.println("[1] Individuellstart");
-			System.out.println("[2] Läggtill åkare");
-			System.out.println("[3] Testa klocka");
-			System.out.println("[4] Avsluta");
+			System.out.println("[1] Starta race");
+			System.out.println("[2] Avsluta");
 
 			choice = input.nextInt();
 
 			switch (choice) {
 			case 1: 
-				//...
-				break;
-			case 2:  
 				Race race = new Race();
 				race.addSkier(); 
 
@@ -35,7 +30,7 @@ public class Menu {
 				iRace.startIndividualRace(race.getSkierslist());
 				running = false;
 				break;
-			case 5: 
+			case 2:  
 				System.out.println("Programmet avslutas"); 
 				running = false;
 				input.close();
