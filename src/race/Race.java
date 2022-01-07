@@ -5,9 +5,7 @@ import leaderboard.Startlist;
 import skier.Skier;
 import skier.random.RaceTag;
 
-public class Race extends Startlist {
-	// Variabler och metoder som gäller individuell start.
-	
+public class Race extends Startlist {	
 	public void addSkier(InputExceptionHandler inputs) {		
 		int interval;
 		do {
@@ -35,7 +33,6 @@ public class Race extends Startlist {
 
 			System.out.println("Ålder:");
 			int age = inputs.inputInt("en ålder");
-
 
 			Skier skier = new Skier(i + 1, name, age);
 
