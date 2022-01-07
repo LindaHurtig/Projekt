@@ -1,7 +1,7 @@
-# Detta är ett prjekt skapat av David x2, Linda och Daniel i grupp 4a.
+# Detta Ã¤r ett projekt skapat av David x2, Linda och Daniel i grupp 4a.
 
-Vi har använt oss av ett externt bibliotek för att spara våra tider.
-För att programmet ska fungera som tänkt behöver ni ändra inställningarna för att Carriage Return ska fungera i Eclipse: Window -> Preferences -> Run/Debug -> Console -> "Enable Interpret ASCII control characters".
+Vi har anvÃ¤nt oss av ett externt bibliotek fÃ¶r att spara vÃ¥ra tider.
+FÃ¶r att programmet ska fungera som tÃ¤nkt behÃ¶ver ni Ã¤ndra instÃ¤llningarna fÃ¶r att Carriage Return ska fungera i Eclipse: Window -> Preferences -> Run/Debug -> Console -> "Enable Interpret ASCII control characters".
   
-Det externa bibliotekt som används heter Guava och detta bibliotek borde ni ha fått ned från Github i lib-foldern.
-Biblioteket lägger ni till i er classpath. Det gör ni på samma sätt som man gör vid JavaFX.
+Det externa biblioteket som anvÃ¤nds heter Guava och detta bibliotek borde ni ha fÃ¥tt ned frÃ¥n Github i lib-foldern.
+Biblioteket lÃ¤gger ni till i er classpath. Det gÃ¶r ni pÃ¥ samma sÃ¤tt som man gÃ¶r vid JavaFX.
