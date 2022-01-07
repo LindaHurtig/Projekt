@@ -16,7 +16,7 @@ public class Leaderboard {
 	
 	public void printLeaderBoardResult() {
 		// Sorterar orginallistan efter getFinalTime()
-		Collections.sort(startList, new SortByTime());
+		Collections.sort(startList, new SortByResultTime());
 		
 		int winnerIndex = 1;
 		System.out.println("------------------SLUT RESULTAT-------------------");
@@ -31,16 +31,27 @@ public class Leaderboard {
 		System.out.println("--------------------------------------------------");
 	}
 	
-	public void printSkierSplitTime(int skierNumber) {
+	public void printSkierSplitTime(int skierNumber) {		
 		if(skierNumber > startList.size()) {
 			System.out.println("Kan inte hitta åkare!");
 			return;
 		}
 		Skier skier = startList.get(skierNumber);
-		System.out.println("Startnummer: " + skier.getStartNumber() + " | Namn: " + skier.getName() + " | Mellantid: " + convertTime(skier.getSplitTime()));
+		Collections.sort(startList, new SortByCurrentTime());
+		int skierPosition = findIndex(skierNumber) + 1;
+		System.out.println("Placering: " + skierPosition + " | Startnummer: " + skier.getStartNumber() + " | Namn: " + skier.getName() + " | Mellantid: " + convertTime(skier.getSplitTime()));
 		System.out.println("");
 	}
 	
+	private int findIndex(int skierNumber) {
+		int index = 0;
+		for(int i = 0; i < startList.size(); i++)
+			if(startList.get(i).getStartNumber() == skierNumber)
+				index++;
+		
+		return index;
+	}
+
 	public String convertTime(long durationInMillis) {
 		long millis = durationInMillis % 1000;
 		long second = (durationInMillis / 1000) % 60;
@@ -51,10 +62,23 @@ public class Leaderboard {
 		return time;
 	}
 	
-	class SortByTime implements Comparator<Skier> {
+	class SortByResultTime implements Comparator<Skier> {
 		public int compare(Skier a, Skier b) {
 			return (int) (a.getFinalTime() - b.getFinalTime());
 		}
+	}
+	
+	class SortByCurrentTime implements Comparator<Skier> {
+		@Override
+		public int compare(Skier a, Skier b) {
+			if(b.getSplitTime() == -1)
+				return 1;
+			else if(a.getSplitTime() == -1)
+				return 1;
+			else
+				return (int) (a.getSplitTime() - b.getSplitTime());
+		}
+		
 	}
 
 }

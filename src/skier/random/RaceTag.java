@@ -8,7 +8,12 @@ import leaderboard.Startlist;
 import skier.Skier;
 
 public class RaceTag {
-
+	private static int interval;
+	
+	public static void setInterval(int interval) {
+		RaceTag.interval = interval;
+	}
+	
 	public void rndRaceTag(Startlist list) {
 		// Temporär lista som innehåller startNumber
 		List<Integer> startNumbers = new ArrayList<Integer>();
@@ -31,7 +36,7 @@ public class RaceTag {
 		
 		//lägg till starttid.
 		for(Skier s : list.getSkierslist()) {
-			s.setStartTime((30000 * (s.getStartNumber() - 1)));
+			s.setStartTime(((interval*1000) * (s.getStartNumber() - 1)));
 		}
 
 		list.printSkiersList(); // utskrift av DELTAGARNAS START LISTA.

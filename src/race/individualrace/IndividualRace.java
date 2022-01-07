@@ -29,8 +29,8 @@ public class IndividualRace implements Runnable {
 		stopWatch = Stopwatch.createStarted();
 
 		System.out.println("-----------INVIDUELLA RACET HAR STARTAT-----------");
-		System.out.println("För Mellantid skriv 'mellantid + åkarens nummer'");
-		System.out.println("För Sluttid skriv 'sluttid + åkarens nummer'");
+		System.out.println("För Mellantid skriv 'm + åkarens nummer'");
+		System.out.println("För Sluttid skriv 's + åkarens nummer'");
 		System.out.println("--------------------------------------------------");
 		
 		thread = new Thread(this);

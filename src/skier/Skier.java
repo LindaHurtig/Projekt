@@ -35,4 +35,11 @@ public class Skier extends Person {
 	public void setStartTime(long l) {
 		this.startTime = l;
 	}
+	
+	public long calcCurrentTime() {
+		if(splitTime == -1) {
+			return 0;
+		}
+		return splitTime - startTime;
+	}
 }
