@@ -42,8 +42,7 @@ public class InputThread implements Runnable {
 				if(selectedSkier != null) {
 					if(selectedSkier.getFinalTime() == -1) {
 						selectedSkier.setFinalTime(selectedSkier.getStartTime() + stopWatch.elapsed().toMillis());
-						System.out.println("Sparad sluttid '" + selectedSkier.getName() + "': " + leaderBoard.convertTime(selectedSkier.getFinalTime()));
-						System.out.println("");
+						System.out.println("Sparad sluttid '" + selectedSkier.getName() + "': " + leaderBoard.convertTime(selectedSkier.getFinalTime()) + "\n");
 					} else {
 						System.out.println(selectedSkier.getName() + " har redan åkt i mål!");
 					}
